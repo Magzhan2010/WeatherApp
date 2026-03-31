@@ -48,7 +48,7 @@ function App() {
   return (
     
     <div className='bg-[#160524] h-screen pt-10 pb-10 font-poppins'>
-      <div className='text-white max-w-[1200px] mx-auto flex-col sm:flex-row gap-3 mb-10'>
+      <div className='text-white max-w-[1200px] mx-auto flex flex-col sm:flex-row gap-3 mb-10'>
         <div>
           <h1 className='text-xl sm:text-3xl font-semibold'>🌤 Weather App</h1>
           <p className='text-lg text-white/70'>Введи город чтобы узнать погоду</p>
@@ -58,7 +58,7 @@ function App() {
           <p>{time.toLocaleTimeString('ru-RU')}</p>
         </div>
       </div>
-    <div className='mx-auto w-full sm:max-w-[600px] text-center text-white bg-[#10113C] rounded-xl p-10'>
+    <div className='mx-auto w-full sm:max-w-[500px] text-center text-white animated-bg rounded-xl p-5 sm:p-10'>
       <div className='flex justify-center '>
         <input type="text" onChange={e => setCity(e.target.value)} value={city} placeholder='Пиши город' onKeyDown={e => e.key === "Enter" && handleSearch()} className='bg-white/10 text-white py-3 px-5 rounded-full outline-none flex-1'/>
         <button onClick={() => handleSearch()} className='py-3 px-6 bg-[#042667] rounded-2xl hover:bg-[#002E78] hover:scale-105 transition-all duration-300 '>{loading ? <BeatLoader  size= {10} color='white'/> : "Search" }
@@ -71,7 +71,7 @@ function App() {
         
         <div className='flex flex-col items-center gap-2 mt-5'>
           <p className='text-2xl font-bold'>{weather.name}</p>
-          <p className='text-6xl font-bold'>{weather.main.temp}°C</p>
+          <p className='text-4xl sm:text-6xl font-bold'>{weather.main.temp}°C</p>
           <p className='text-lg capitalize text-white/70'>{weather.weather[0].description}</p>
           <p className='text-sm text-white/60'>Влажность: {weather.main.humidity}%</p>
           <p className='text-sm text-white/60'>Ветер: {weather.wind.speed} м/с</p>
