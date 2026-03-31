@@ -45,6 +45,15 @@ function App() {
       }
     )
   }, [])
+  const getBg = (condition) => {
+    switch(condition) {
+      case 'Clear': return 'from-[#f6d100] to-[#fda085]'
+      case "Clouds": return 'from-[#606c88] to-[#3f4c6b]'
+      case "Rain": return 'from-[#373b44] to-[#4286f4]'
+      case "Snow": return 'from-[#e0eafc] to-[#cfdef3]'
+      default: return "from-[#0f0c29] to-[#24243e]"
+    }
+  }
   return (
     
     <div className='bg-[#160524] h-screen pt-10 pb-10 font-poppins'>
@@ -58,7 +67,7 @@ function App() {
           <p>{time.toLocaleTimeString('ru-RU')}</p>
         </div>
       </div>
-    <div className='mx-auto w-full sm:max-w-[500px] text-center text-white animated-bg rounded-xl p-5 sm:p-10'>
+    <div className={`bg-gradient-to-br ${weather ? getBg(weather.weather[0].main) : 'from-[#0f0c29] to-[#24243e]'} mx-auto w-full sm:max-w-[500px] text-center text-white  rounded-xl p-5 sm:p-10 transition-all duration-1000`}>
       <div className='flex justify-center '>
         <input type="text" onChange={e => setCity(e.target.value)} value={city} placeholder='Пиши город' onKeyDown={e => e.key === "Enter" && handleSearch()} className='bg-white/10 text-white py-3 px-5 rounded-full outline-none flex-1'/>
         <button onClick={() => handleSearch()} className='py-3 px-6 bg-[#042667] rounded-2xl hover:bg-[#002E78] hover:scale-105 transition-all duration-300 '>{loading ? <BeatLoader  size= {10} color='white'/> : "Search" }
